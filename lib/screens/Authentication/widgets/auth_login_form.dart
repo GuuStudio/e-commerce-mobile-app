@@ -1,8 +1,14 @@
+
+
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_button.dart';
+import 'package:e_commerce_app/screens/Authentication/widgets/auth_button_loading.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_input.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_remember_forgot_password.dart';
-import 'package:e_commerce_app/screens/Authentication/widgets/auth_services.dart';
+import 'package:e_commerce_app/screens/Authentication/widgets/auth_other_service_widget.dart';
+import 'package:e_commerce_app/screens/auth_wrapper.dart';
 import 'package:flutter/material.dart';
+
+import '../../../services/auth_service.dart';
 
 class AuthLoginForm extends StatefulWidget {
   const AuthLoginForm({super.key});
@@ -12,23 +18,47 @@ class AuthLoginForm extends StatefulWidget {
 }
 
 class _AuthLoginFormState extends State<AuthLoginForm> {
-  onLogin() => Navigator.pushReplacementNamed(context, '/sign-up');
+
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  bool _loading = false;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _email.dispose();
+    _password.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = AuthService();
+    Future<void> onLogin () async {
+      setState(() {
+        _loading = !_loading;
+      });
+      await auth.signInUserWithEmailAndPassword(_email.text, _password.text);
+      setState(() {
+        _loading = false;
+      });
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AuthWrapper()));
+    }
     ThemeData themeData = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AuthInput(
+        AuthInput(
+          controller: _email,
           labelTitle: 'Email',
           hint: 'example@gmail.com',
         ),
         const SizedBox(
           height: 24,
         ),
-        const AuthInput(
+        AuthInput(
+          controller: _password,
           labelTitle: 'PASSWORD',
           hint: '************',
         ),
@@ -39,7 +69,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
         const SizedBox(
           height: 24,
         ),
-        AuthButtonSubmit(
+        _loading ? const AuthButtonLoading(title:'ON LOADING...') : AuthButtonSubmit(
           title: 'LOG IN',
           onSubMit: onLogin,
         ),
@@ -79,7 +109,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
         const SizedBox(
           height: 22,
         ),
-        const AuthServices(),
+        const AuthOtherServiceWidget(),
       ],
     );
   }

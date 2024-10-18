@@ -1,8 +1,10 @@
+
 import 'package:e_commerce_app/apps/constants.dart';
 import 'package:e_commerce_app/screens/Profile/widgets/profile_app_bar.dart';
 import 'package:e_commerce_app/screens/Profile/widgets/profile_list_products.dart';
 import 'package:e_commerce_app/screens/Profile/widgets/profile_overview.dart';
 import 'package:e_commerce_app/screens/Profile/widgets/profile_user_name.dart';
+import 'package:e_commerce_app/services/auth_service.dart';
 
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = AuthService();
     return Scaffold(
       endDrawer: Drawer(
         child: ListView(
@@ -18,13 +21,12 @@ class ProfileScreen extends StatelessWidget {
             ListTile(
               title: const Text('Log Out'),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/sign-in');
+                auth.signOut();
               },
             ),
             ListTile(
               title: const Text('Item 1'),
               onTap: () {
-
               },
             ),
           ],

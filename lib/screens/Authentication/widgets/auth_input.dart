@@ -2,10 +2,11 @@ import 'package:e_commerce_app/apps/constants.dart';
 import 'package:flutter/material.dart';
 
 class AuthInput extends StatefulWidget {
-  const AuthInput({super.key, required this.hint, required this.labelTitle});
+  const AuthInput({super.key, required this.hint, required this.labelTitle, this.controller});
 
   final String labelTitle;
   final String hint;
+  final TextEditingController? controller;
 
   @override
   State<AuthInput> createState() => _AuthInputState();
@@ -31,6 +32,7 @@ class _AuthInputState extends State<AuthInput> {
           ),
           child: Center(
             child: TextField(
+              controller: widget.controller,
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
