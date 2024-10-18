@@ -1,5 +1,9 @@
+
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_button.dart';
+import 'package:e_commerce_app/screens/Authentication/widgets/auth_button_loading.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_input.dart';
+import 'package:e_commerce_app/screens/auth_wrapper.dart';
+import 'package:e_commerce_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class AuthSignUpForm extends StatefulWidget {
@@ -10,7 +14,35 @@ class AuthSignUpForm extends StatefulWidget {
 }
 
 class _AuthSignUpFormState extends State<AuthSignUpForm> {
-  onSignIn () => Navigator.pushReplacementNamed(context, '/home');
+
+  final _name = TextEditingController();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _confirmPassword = TextEditingController();
+  final auth = AuthService();
+  bool _loading = false;
+  Future<void> onSignUp() async {
+    setState(() {
+      _loading = true;
+    });
+    if (_password.text == _confirmPassword.text) {
+      await auth.createUserWithEmailAndPassword(_email.text, _password.text);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AuthWrapper()));
+    }
+    setState(() {
+      _loading = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _name.dispose();
+    _email.dispose();
+    _password.dispose();
+    _confirmPassword.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -18,14 +50,38 @@ class _AuthSignUpFormState extends State<AuthSignUpForm> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AuthInput(labelTitle: 'NAME',hint: 'John Doe',),
-        const SizedBox(height: 24,),
-        const AuthInput(labelTitle: 'Email',hint: 'Example@gmail.com',),
-        const SizedBox(height: 24,),
-        const AuthInput(labelTitle: 'PASSWORD',hint: '************',),
-        const SizedBox(height: 25,),
-        const AuthInput(labelTitle: 'CONFIRM-PASSWORD',hint: '************',),
-        const SizedBox(height: 15,),
+        AuthInput(
+          controller: _name,
+          labelTitle: 'NAME',
+          hint: 'John Doe',
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        AuthInput(
+          controller: _email,
+          labelTitle: 'Email',
+          hint: 'Example@gmail.com',
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        AuthInput(
+          controller: _password,
+          labelTitle: 'PASSWORD',
+          hint: '************',
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+         AuthInput(
+          controller: _confirmPassword,
+          labelTitle: 'CONFIRM-PASSWORD',
+          hint: '************',
+        ),
+        const SizedBox(
+          height: 15,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,8 +112,13 @@ class _AuthSignUpFormState extends State<AuthSignUpForm> {
             ),
           ],
         ),
-        const SizedBox(height: 10,),
-        AuthButtonSubmit(title: 'SIGN UP',onSubMit: onSignIn,),
+        const SizedBox(
+          height: 10,
+        ),
+        _loading ? const AuthButtonLoading(title: 'Loading') :  AuthButtonSubmit(
+          title: 'SIGN UP',
+          onSubMit: onSignUp,
+        ),
       ],
     );
   }

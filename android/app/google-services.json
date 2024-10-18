@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "997754583989",
-    "project_id": "authentication-bcd2c",
-    "storage_bucket": "authentication-bcd2c.appspot.com"
+    "project_number": "390595523278",
+    "project_id": "e-commerce-app-746e7",
+    "storage_bucket": "e-commerce-app-746e7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:997754583989:android:b7645875eea3ad9a7037fc",
+        "mobilesdk_app_id": "1:390595523278:android:62c1e5cd25c584539c969f",
         "android_client_info": {
-          "package_name": "com.example.firebaseauthentication"
+          "package_name": "com.example.e_commerce_app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD7qwJS7WRLZJIboUf5D1LnRnxilY6YWW8"
+          "current_key": "AIzaSyBRBByXY6uRmVwaCuIPq47WCOAuLpXe6VE"
         }
       ],
       "services": {
