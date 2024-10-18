@@ -33,9 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               // for custom appbar
               const CustomAppBar(),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20,),
               // for search bar
               const CustomSearchBar(),
               const SizedBox(

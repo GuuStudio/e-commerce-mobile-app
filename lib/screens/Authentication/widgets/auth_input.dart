@@ -31,9 +31,6 @@ class _AuthInputState extends State<AuthInput> {
           ),
           child: Center(
             child: TextField(
-              onChanged:(e) {
-                print(e.toString());
-              },
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },

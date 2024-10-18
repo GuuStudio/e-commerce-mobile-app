@@ -31,7 +31,9 @@ class ProfileAppBar extends StatelessWidget {
           style: IconButton.styleFrom(
             padding: const EdgeInsets.all(15),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openEndDrawer();
+          },
           iconSize: 30,
           icon: const Icon(
             Icons.settings_outlined,

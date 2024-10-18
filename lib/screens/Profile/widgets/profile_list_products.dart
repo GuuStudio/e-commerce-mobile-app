@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/screens/profile/wigets/profile_product_card.dart';
+import 'package:e_commerce_app/screens/profile/widgets/profile_product_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';

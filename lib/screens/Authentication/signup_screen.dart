@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_bottom_sheet.dart';
-import 'package:e_commerce_app/screens/Authentication/widgets/auth_login_form.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_signup_form.dart';
 import 'package:flutter/material.dart';
 
