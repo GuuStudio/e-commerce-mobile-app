@@ -5,15 +5,25 @@ import 'package:e_commerce_app/screens/Cart/widgets/cart_list_view.dart';
 import 'package:flutter/material.dart';
 
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
   @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+
+  bool _showBottomSheet = false;
+  @override
   Widget build(BuildContext context) {
-    handleShowSheet () {
-      Scaffold.of(context).showBottomSheet((_) => const CartCheckout());
+    void handleShowSheet () {
+      setState(() {
+        _showBottomSheet = !_showBottomSheet;
+      });
     }
     return Scaffold(
+      bottomSheet: _showBottomSheet  ? CartCheckout(showBottomSheet: handleShowSheet,) : null,
       backgroundColor: kcontentColor,
       body: SingleChildScrollView(
         child: SafeArea(

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/screens/AddProduct/add_product_screen.dart';
 import 'package:e_commerce_app/screens/Cart/cart_screen.dart';
 import 'package:e_commerce_app/screens/Favorite/favorite_screen.dart';
 import 'package:e_commerce_app/screens/Home/home_screen.dart';
@@ -16,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> screens = [
     const HomeScreen(),
     const FavoriteScreen(),
-    const Scaffold(),
+    const AddProductScreen(),
     const CartScreen(),
     const ProfileScreen(),
   ];

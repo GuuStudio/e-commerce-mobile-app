@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+
+
 class AuthService {
   final _auth = FirebaseAuth.instance;
   Future<User?> createUserWithEmailAndPassword(String email, String password) async {
@@ -78,5 +80,6 @@ class AuthService {
         log('Something wrong');
     }
   }
-
 }
+
+//keytool -list -v -keystore ".android\debug.keystore" -alias androiddebugkey -storepass android -keypass android

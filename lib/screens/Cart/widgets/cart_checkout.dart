@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartCheckout extends StatelessWidget {
-  const CartCheckout({super.key});
-
+  const CartCheckout({super.key, required this.showBottomSheet});
+  final Function showBottomSheet;
   @override
   Widget build(BuildContext context) {
     final cartProvider = context.watch<CartProvider>();
     final total = cartProvider.priceTotal();
     ThemeData themeData = Theme.of(context);
     return Container(
-      height: 350,
+      height: 450,
       padding: const EdgeInsets.only(top: 30, right: 30, bottom: 10, left: 30),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -121,7 +121,7 @@ class CartCheckout extends StatelessWidget {
           const SizedBox(height: 10,),
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              showBottomSheet();
             },
             child: Container(
               width: double.infinity,

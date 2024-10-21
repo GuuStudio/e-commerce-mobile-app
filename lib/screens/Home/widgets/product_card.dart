@@ -83,12 +83,12 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                         ),
                         Row(
-                          children: List.generate(widget.product.colors.length, (index) {
+                          children: List.generate(productsColors.length, (index) {
                             return Container(
                               width: 18,
                               height: 18,
                               decoration:
-                                  BoxDecoration(color: widget.product.colors[index], shape: BoxShape.circle),
+                                  BoxDecoration(color:  productsColors[index], shape: BoxShape.circle),
                             );
                           }),
                         ),
