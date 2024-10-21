@@ -1,12 +1,8 @@
-import 'dart:async';
 
-import 'package:e_commerce_app/apps/constants.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_button.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_button_loading.dart';
 import 'package:e_commerce_app/screens/Authentication/widgets/auth_input.dart';
-import 'package:e_commerce_app/screens/auth_wrapper.dart';
 import 'package:e_commerce_app/services/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';

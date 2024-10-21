@@ -20,7 +20,6 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   int currentImage = 0;
   int currentColor = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +87,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 20,
                     ),
                     Row(
-                      children: List.generate(widget.product.colors.length, (index) {
+                      children: List.generate(productsColors.length, (index) {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
@@ -103,16 +102,16 @@ class _DetailScreenState extends State<DetailScreen> {
                             margin: const EdgeInsets.only(right: 10),
                             decoration: BoxDecoration(
                               color:
-                                  currentColor == index ? Colors.white : widget.product.colors[index],
+                                  currentColor == index ? Colors.white : productsColors[index],
                               shape: BoxShape.circle,
                               border: currentColor == index
-                                  ? Border.all(color: widget.product.colors[index])
+                                  ? Border.all(color: productsColors[index])
                                   : null,
                             ),
                             child: Center(
                               child: Container(
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.circle, color: widget.product.colors[index]),
+                                    shape: BoxShape.circle, color: productsColors[index]),
                               ),
                             ),
                           ),

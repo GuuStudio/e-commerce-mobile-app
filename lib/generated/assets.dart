@@ -9,7 +9,9 @@ class Assets {
   static const String beautyFaceCare = 'assets/images/beauty/face-care.png';
   static const String beautyPerfume = 'assets/images/beauty/perfume.png';
   static const String imagesAll = 'assets/images/all.png';
+  static const String imagesApple = 'assets/images/apple.png';
   static const String imagesBeauty = 'assets/images/beauty.png';
+  static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesIcon = 'assets/images/icon.png';
   static const String imagesImage1 = 'assets/images/image1.png';
   static const String imagesJewelry = 'assets/images/jewelry.png';
@@ -18,6 +20,7 @@ class Assets {
   static const String imagesShoes = 'assets/images/shoes.png';
   static const String imagesSlider = 'assets/images/slider.jpg';
   static const String imagesSlider3 = 'assets/images/slider3.png';
+  static const String imagesTwist = 'assets/images/twist.png';
   static const String jewelryEarrings = 'assets/images/jewelry/earrings.png';
   static const String jewelryJewelryBox = 'assets/images/jewelry/jewelry-box.png';
   static const String jewelryNecklaceJewellery = 'assets/images/jewelry/necklace-jewellery.png';
